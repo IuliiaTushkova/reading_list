@@ -39,11 +39,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
+
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
@@ -109,15 +105,19 @@ class UsersController extends AppController
         $this->Authentication->addUnauthenticatedActions(['login']);
     }
 
+    /*
+     * login and redirect to the general book list
+     * */
     public function login()
     {
-        $this->request->allowMethod(['post']);
+        $this->request->allowMethod(['get', 'post']);
         $result = $this->Authentication->getResult();
         // indépendamment de POST ou GET, rediriger si l'utilisateur est connecté
+
         if ($result->isValid()) {
             // rediriger vers /books après la connexion réussie
             $redirect = $this->request->getQuery('redirect', [
-                'controller' => 'Books',
+                'controller' => 'Users',
                 'action' => 'index',
             ]);
 

@@ -159,7 +159,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             'queryParam' => 'redirect',
         ]);
 
-        // Charge les identifiants et s'assure que nous vérifions les champs e-mail et mot de passe
+        // Charge les identifiants et s'assure que nous vérifions les champs pseudo et mot de passe
         $authenticationService->loadIdentifier('Authentication.Password', [
             'fields' => [
                 'username' => 'pseudo',
@@ -178,7 +178,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             'loginUrl' => '/users/login',
         ]);
 
-        return $authenticationService;
+       return $authenticationService;
     }
 
 }
